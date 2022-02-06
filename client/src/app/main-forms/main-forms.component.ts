@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Output } from "@angular/core";
+import { EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-main-forms",
@@ -7,7 +8,13 @@ import { Component } from "@angular/core";
 })
 
 export class MainFormsComponent {
-  transfer(){
-    console.log('Requested Transfer...')
+
+  @Output() transfering:EventEmitter<any> = new EventEmitter();
+
+  file: string ='';
+
+  toTransfer(){
+    console.log('Requested Transfer...');
+    this.transfering.emit(this.file);
   }
 }

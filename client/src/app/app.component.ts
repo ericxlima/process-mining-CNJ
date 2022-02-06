@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client';
+  title = 'MP4CNJ';
+
+  transfering_db($event: any){
+    console.log($event)
+  }
+
 }
