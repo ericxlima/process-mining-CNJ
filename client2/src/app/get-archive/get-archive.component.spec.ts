@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableContentComponent } from './table-content.component';
+import { GetArchiveComponent } from './get-archive.component';
 
-describe('TableContentComponent', () => {
-  let component: TableContentComponent;
-  let fixture: ComponentFixture<TableContentComponent>;
+describe('GetArchiveComponent', () => {
+  let component: GetArchiveComponent;
+  let fixture: ComponentFixture<GetArchiveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableContentComponent ]
+      declarations: [ GetArchiveComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableContentComponent);
+    fixture = TestBed.createComponent(GetArchiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
