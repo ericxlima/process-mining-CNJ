@@ -1,5 +1,6 @@
 import { Component, Output } from "@angular/core";
 import { EventEmitter } from "@angular/core";
+// import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: "app-main-forms",
@@ -9,6 +10,8 @@ import { EventEmitter } from "@angular/core";
 
 export class MainFormsComponent {
 
+  // constructor(private http: HttpClient) { }
+
   @Output() transfering:EventEmitter<any> = new EventEmitter();
 
   file: string ='';
@@ -16,5 +19,8 @@ export class MainFormsComponent {
   toTransfer(){
     console.log('Requested Transfer...');
     this.transfering.emit(this.file);
+
+    // Make a POST Method
+    // return this.http.get('http://127.0.0.1:5000/');
   }
 }

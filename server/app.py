@@ -1,6 +1,18 @@
 from flask import Flask
-from server.blueprints.index import index
+from flask import request
+
 
 app = Flask(__name__)
-app.register_blueprint(index)
+
+@app.route("/", methods=["GET"])
+def index():
+    return "hello"
+
+@app.route('/api/v1/load_data', methods=["POST"])
+def load_data():
+    body = request.get_csv()
+    print(body)
+    
+    return body
+
 
