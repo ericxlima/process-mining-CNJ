@@ -1,12 +1,10 @@
 from flask import Blueprint
 
-from .routes import example
 
+api_bp = Blueprint('api', __name__,
+                   static_folder='./server/static')
 
-bp = Blueprint('api', __name__)
+@api_bp.route('/')
+def index_api():
+    return '<p>Bem vindo a API</p>'
 
-bp.add_url_rule('/api/v1/', view_func=example)
-# bp.add_url_rule('/api/v1/login', view_func=login, methods=['GET', 'POST'])
-
-def init_app(app):
-    app.register_blueprint(bp)
