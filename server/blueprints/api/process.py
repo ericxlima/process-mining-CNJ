@@ -34,6 +34,7 @@ from pm4py.visualization.dfg import visualizer as dfg_visualization
 
 PATH_FILE_XES = 'blueprints/api/files/EventLog_Anonim_UTF8.xes'
 PATH_FILE_CSV = 'blueprints/api/files/EventLog_Anonim_UTF8.csv'
+PATH_FILE_SVG = 'blueprints/api/files/EventLog_Anonim_UTF8.svg'
 
 
 def transform_csv_to_eventlog():
@@ -60,8 +61,8 @@ def transform_csv_to_eventlog():
 def transform_eventlog_to_dfg():
     log_xes = xes_importer.apply(PATH_FILE_XES)
     dfg = dfg_discovery.apply(log_xes)
-    print(dfg)
-    
+    gviz = dfg_visualization.apply(dfg, log=log_xes)
+    dfg_visualization.save(gviz=gviz, output_file_path=PATH_FILE_SVG)
     return
 
 

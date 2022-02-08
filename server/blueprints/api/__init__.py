@@ -22,6 +22,7 @@ def post_data():
         # save the file
     return redirect(url_for('process'))
 
+
 #  Calculate Rules
 @api_bp.route('/process')
 def process():
