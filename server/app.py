@@ -6,6 +6,8 @@ from blueprints.api import api_bp
 
 
 app = Flask(__name__)
+app.config.update(SECRET_KEY="123456789")
+
 CORS(app)
 cors = CORS(app, resources={
     r"/*":{
@@ -13,6 +15,7 @@ cors = CORS(app, resources={
         # "origins": "localhost",
     }
 })
+
 # app.config["DEBUG"] = True
 
 app.register_blueprint(templates_bp)

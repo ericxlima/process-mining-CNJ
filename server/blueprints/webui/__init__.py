@@ -14,3 +14,6 @@ def index_template():
 def api_template():
     return '# Doc to API'
     
+@templates_bp.route('/test')
+def test():
+    return render_template('test_post.jinja2')

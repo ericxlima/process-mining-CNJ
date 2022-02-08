@@ -10,36 +10,34 @@ import { Data } from '../models/data'
 })
 export class DataService {
 
-  url = 'http://127.0.0.1:5000/'; // api rest
-  url_test_post = 'http://127.0.0.1:5000/api/v1/post_data';
-  url_test_get = 'https://viacep.com.br/ws/56600000/json'
-  constructor(private httpClient: HttpClient) { }
+  url:string = 'http://127.0.0.1:5000/'; // api rest
+  url_test_post:string = 'http://127.0.0.1:5000/api/v1/post_data';
+  url_test_get:string = 'https://viacep.com.br/ws/56600000/json'
+  
+  constructor(private http: HttpClient) {
+  }
 
   // Headers
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/csv' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
   getData(): Observable<any[]> {
-    return this.httpClient.get<any[]>(this.url_test_get)
+    return this.http.get<any[]>(this.url_test_get)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
   postData(file:any): any {
+    // console.log(file)  // Debug, file is here
     const headers = {
-      'Access-Control-Allow-Origin': 'True',
-      'Accept': 'application/csv',
-      'Content-Type': 'application/csv',
-      'cache': 'false',
-      'method': 'POST',
-      'dataType': 'csv',
-    }
-    this.httpClient.post<any>(this.url_test_post, file, {headers}).toPromise().then(
+      "Accept":"application/csv",
+      "content-type": "text/pain",
+    };
+    this.http.post<any>(this.url_test_post, file, {'headers':headers}).toPromise().then(
       data=>{console.log(data)}
     )
-
   }
 
   handleError(error: HttpErrorResponse) {

@@ -1,7 +1,8 @@
-import { NONE_TYPE } from "@angular/compiler";
+// import { NONE_TYPE } from "@angular/compiler";
 import { Component, Output } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { DataService } from "../services/data.service";
+import { HttpClient } from "@angular/common/http";
 
 
 @Component({
@@ -12,16 +13,17 @@ import { DataService } from "../services/data.service";
 
 export class MainFormsComponent {
   
+  constructor(private data:DataService){ 
+  // constructor(private http:HttpClient){
+  }
+    
   file: any;
 
 
-  constructor(private data:DataService){
-    
-  }
-  
   toTransfer() {
+    console.log('Tranfering ' + this.file) 
+    // typeof(this.file)  -> string
     this.data.postData(this.file)
-    return
   };
 
   toGet() {

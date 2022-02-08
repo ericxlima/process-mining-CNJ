@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block container %}
+    <section class="forms-section">
+        <form action="http://127.0.0.1:5000/api/v1/post_data" method="post" enctype="multipart/form-data">
+            <h2>MP4CNJ</h2>
+            <label for="file">Drop the EventLog:</label>
+            <input type="file" name="file">
+            <input type="submit" value="Upload">
+        </form>
+    </section>
+{% endblock %}

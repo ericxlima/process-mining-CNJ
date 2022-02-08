@@ -1,9 +1,9 @@
 <section class="forms-section">
-  <form class="forms"(ngSubmit)="toTransfer()">
+  <form class="forms" (ngSubmit)="toTransfer()" methods='post' enctype="multipart/form-data" >
     <h2 class="forms-title">MP4CNJ </h2>
-    <label class="input-label" for="input-name">Drop the EventLog:</label>
-    <input class="file-input" value="file" type="file" name="input-file" 
-           id="file" [(ngModel)]="file">
+    <label class="input-label" for="file">Drop the EventLog:</label>
+    <input class="file" type="file" name="file" 
+           id="file" [(ngModel)]="file" required>
     <button class="forms-button" type="submit">Send File</button>
   </form>
 </section>
