@@ -6,7 +6,7 @@ sudo apt-get install graphviz
 ## For Client:
 ```sh
 cd client
-#nvm install 14.19.0
+nvm install 14.19.0
 nvm use 14.19.0
 npm install -g @angular/cli
 
