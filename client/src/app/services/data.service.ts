@@ -13,13 +13,8 @@ export class DataService {
   url:string = 'http://127.0.0.1:5000/'; // api rest
   url_test_post:string = 'http://127.0.0.1:5000/api/v1/post_data';
   url_test_get:string = 'https://viacep.com.br/ws/56600000/json'
-  
-  constructor(private http: HttpClient) {
-  }
 
-  // Headers
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  constructor(private http: HttpClient) {
   }
 
   getData(): Observable<any[]> {
@@ -29,13 +24,8 @@ export class DataService {
         catchError(this.handleError))
   }
 
-  postData(file:any): any {
-    // console.log(file)  // Debug, file is here
-    const headers = {
-      "Accept":"application/csv",
-      "content-type": "text/pain",
-    };
-    this.http.post<any>(this.url_test_post, file, {'headers':headers}).toPromise().then(
+  postData(file: any, data: File, options: object): any {
+    this.http.post<any>(this.url_test_post, data, options).toPromise().then(
       data=>{console.log(data)}
     )
   }
