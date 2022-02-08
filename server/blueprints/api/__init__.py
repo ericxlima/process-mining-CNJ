@@ -1,5 +1,10 @@
+from os.path import join
+import json
+import uuid
+
 from flask import Blueprint, flash
 
+from flask import current_app
 from flask import request
 from flask import redirect
 from flask import url_for
@@ -18,18 +23,13 @@ def index_api():
 @api_bp.route('/post_data', methods=["POST"])
 def post_data():
     if request.method == 'POST':
-        if 'file' not in request.files:
-            # flash('No file ;-;', 'warning')
-            print('<oh no, this is not a file>')
-            return ';-;'
-        
-        file = request.files.get('file')
-        print(file)
-        if file:
-            file.save(f"blueprints/api/files/{file.filename}.csv")
-            print('<ohh yeah>')
-            return 'Well Done', 200
-        return 'No selected File'
+        if request.data:
+            path = current_app.config['UPLOAD_FOLDER']
+            file_name = f"{current_app.config['FILE_NAME']}.{uuid.uuid4().hex}.csv"
+            with open(join(path, file_name), 'wb') as uploaded_file:
+                uploaded_file.write(request.data)
+            return json.dumps({'message': 'File saved successfully', 'status': 200})
+        return json.dumps({'message': 'No content'})
         # return redirect(url_for('process'))
 
 
