@@ -1,5 +1,7 @@
 import { Component, Output } from "@angular/core";
 import { EventEmitter } from "@angular/core";
+import { DataService } from "../services/data.service";
+
 
 @Component({
   selector: "app-main-forms",
@@ -16,4 +18,10 @@ export class MainFormsComponent {
     console.log(this.file)
   }
   
+  constructor(private data:DataService){
+    this.data.getData().subscribe(data=>{
+      console.log(data)
+    })
+  }
+
 }

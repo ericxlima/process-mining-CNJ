@@ -1,5 +1,5 @@
 export interface Data {
-    Case: number;
+    Case: string;
     ActivityCode: string;
     Start: string;
     End: string;

@@ -24,37 +24,37 @@ export class DataService {
         catchError(this.handleError))
   }
 
-  getDataByCase(Case: number): Observable<Data> {
-    return this.httpClient.get<Data>(this.url + '/' + Case)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
+  // getDataByCase(Case: number): Observable<Data> {
+  //   return this.httpClient.get<Data>(this.url + '/' + Case)
+  //     .pipe(
+  //       retry(2),
+  //       catchError(this.handleError)
+  //     )
+  // }
 
-  saveData(data: Data): Observable<Data> {
-    return this.httpClient.post<Data>(this.url, JSON.stringify(data), this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
+  // saveData(data: Data): Observable<Data> {
+  //   return this.httpClient.post<Data>(this.url, JSON.stringify(data), this.httpOptions)
+  //     .pipe(
+  //       retry(2),
+  //       catchError(this.handleError)
+  //     )
+  // }
 
-  updateData(data: Data): Observable<Data> {
-    return this.httpClient.put<Data>(this.url + '/' + data.Case, JSON.stringify(data), this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
-  }
+  // updateData(data: Data): Observable<Data> {
+  //   return this.httpClient.put<Data>(this.url + '/' + data.Case, JSON.stringify(data), this.httpOptions)
+  //     .pipe(
+  //       retry(1),
+  //       catchError(this.handleError)
+  //     )
+  // }
 
-  deleteData(data: Data) {
-    return this.httpClient.delete<Data>(this.url + '/' + data.Case, this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
-  }
+  // deleteData(data: Data) {
+  //   return this.httpClient.delete<Data>(this.url + '/' + data.Case, this.httpOptions)
+  //     .pipe(
+  //       retry(1),
+  //       catchError(this.handleError)
+  //     )
+  // }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
