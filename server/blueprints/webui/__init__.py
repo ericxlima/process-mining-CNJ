@@ -8,7 +8,7 @@ templates_bp = Blueprint('templates', __name__,
 
 @templates_bp.route('/')
 def index_template():
-    return render_template('index.html')
+    return render_template('index.jinja2')
 
 @templates_bp.route('/api')
 def api_template():

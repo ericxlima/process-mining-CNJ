@@ -1,3 +1,4 @@
+import { NONE_TYPE } from "@angular/compiler";
 import { Component, Output } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { DataService } from "../services/data.service";
@@ -12,16 +13,23 @@ import { DataService } from "../services/data.service";
 export class MainFormsComponent {
   
   file: any;
-  
-  toTransfer() {
-    console.log('clicou')
-    console.log(this.file)
+
+
+  constructor(private data:DataService){
+    
   }
   
-  constructor(private data:DataService){
+  toTransfer() {
+    this.data.postData(this.file)
+    return
+  };
+
+  toGet() {
+    console.log('File-Name:')
+    console.log(this.file)
     this.data.getData().subscribe(data=>{
       console.log(data)
     })
   }
-
 }
+

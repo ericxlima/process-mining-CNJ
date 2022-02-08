@@ -1,3 +1,4 @@
+from urllib import response
 from flask import Blueprint
 
 from flask import request
@@ -9,22 +10,24 @@ api_bp = Blueprint('api', __name__,
 
 @api_bp.route('/')
 def index_api():
-    return '<h1>Bem vindo a API</h1>'
+    return '<h1>Wellcome to API</h1>'
 
 
 #  Get csv file from FrontEnd
 @api_bp.route('/post_data', methods=["POST"])
 def post_data():
-    uploaded_file = request.files['file']
+    header = request.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return '', 200
+    file = request.files.get('file')
+    print(file)
     if uploaded_file:
-        # set the file path
         uploaded_file.save("./files")
-        # save the file
-    return redirect(url_for('process'))
+    # return redirect(url_for('process'))
 
 
 #  Calculate Rules
 @api_bp.route('/process')
 def process():
     #  Transform csv in xes (eventlog)
-    return 'Você conseguiu! XD'
+    return 'Well Done! XD'

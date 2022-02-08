@@ -4,12 +4,15 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Data } from '../models/data'
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
   url = 'http://127.0.0.1:5000/'; // api rest
+  url_test_post = 'http://127.0.0.1:5000/api/v1/post_data';
+  url_test_get = 'https://viacep.com.br/ws/56600000/json'
   constructor(private httpClient: HttpClient) { }
 
   // Headers
@@ -17,44 +20,27 @@ export class DataService {
     headers: new HttpHeaders({ 'Content-Type': 'application/csv' })
   }
 
-  getData(): Observable<Data[]> {
-    return this.httpClient.get<Data[]>(this.url)
+  getData(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.url_test_get)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
-  // getDataByCase(Case: number): Observable<Data> {
-  //   return this.httpClient.get<Data>(this.url + '/' + Case)
-  //     .pipe(
-  //       retry(2),
-  //       catchError(this.handleError)
-  //     )
-  // }
+  postData(file:any): any {
+    const headers = {
+      'Access-Control-Allow-Origin': 'True',
+      'Accept': 'application/csv',
+      'Content-Type': 'application/csv',
+      'cache': 'false',
+      'method': 'POST',
+      'dataType': 'csv',
+    }
+    this.httpClient.post<any>(this.url_test_post, file, {headers}).toPromise().then(
+      data=>{console.log(data)}
+    )
 
-  // saveData(data: Data): Observable<Data> {
-  //   return this.httpClient.post<Data>(this.url, JSON.stringify(data), this.httpOptions)
-  //     .pipe(
-  //       retry(2),
-  //       catchError(this.handleError)
-  //     )
-  // }
-
-  // updateData(data: Data): Observable<Data> {
-  //   return this.httpClient.put<Data>(this.url + '/' + data.Case, JSON.stringify(data), this.httpOptions)
-  //     .pipe(
-  //       retry(1),
-  //       catchError(this.handleError)
-  //     )
-  // }
-
-  // deleteData(data: Data) {
-  //   return this.httpClient.delete<Data>(this.url + '/' + data.Case, this.httpOptions)
-  //     .pipe(
-  //       retry(1),
-  //       catchError(this.handleError)
-  //     )
-  // }
+  }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
