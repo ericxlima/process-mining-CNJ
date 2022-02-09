@@ -1,3 +1,4 @@
 <div class="all-content">
-  <app-main-forms></app-main-forms>
+  <app-main-forms (toPostURI)="transfering($event)"></app-main-forms>
+  <app-viewer-svg [uri]="uri"></app-viewer-svg>
 </div>

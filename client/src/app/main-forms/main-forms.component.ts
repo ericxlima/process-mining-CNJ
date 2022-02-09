@@ -1,7 +1,7 @@
-import { Component, Output } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { DataService } from "../services/data.service";
 // import { EventEmitter } from "@angular/core";
-// import { HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 
 @Component({
@@ -14,6 +14,9 @@ export class MainFormsComponent {
 
   file: string;
   fileData: File;
+  response: any;
+
+  @Output() toPostURI = new EventEmitter<any>();  
 
   constructor(private apiService: DataService){
   }
@@ -28,7 +31,17 @@ export class MainFormsComponent {
   toTransfer() {
     let headers = new Headers();
     headers.append('Accept', 'application/json');
-    this.apiService.postData(this.file, this.fileData, { headers: headers })
+    this.response = this.apiService.postData(this.file, this.fileData, { headers: headers }).subscribe(
+      (data:any)=>{
+        // console.log('FRONT')
+        // console.log(data)
+        // data            <<<<<<<<<<<<<------------- Data 
+        // console.log('Solicitada transferencia')
+        this.toPostURI.emit(data.uri)
+      }
+    )
+      // console.log('Response FRONT:', this.response)
+      // console.log('Test: ', this.apiService.response)
   };
 
   toGet() {

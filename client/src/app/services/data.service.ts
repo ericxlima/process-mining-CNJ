@@ -13,6 +13,8 @@ export class DataService {
   url_post_api:string = 'http://127.0.0.1:5000/api/v1/post_data';
   url_get_img:string = 'http://127.0.0.1:5000/api/v1/<link>'
 
+  response:any = 'aqui';
+
   constructor(private http: HttpClient) {
   }
 
@@ -23,10 +25,16 @@ export class DataService {
         catchError(this.handleError))
   }
 
-  postData(file: any, data: File, options: object): any {
-    this.http.post<any>(this.url_post_api, data, options).toPromise().then(
-      data=>{console.log(data)}
-    )
+  postData(file: any, data: File, options: object): Observable<any[]> {
+    return this.http.post<any[]>(this.url_post_api, data, options).pipe(
+      retry(2),
+      catchError(this.handleError))
+    
+    // .subscribe((response:any)=>{
+    //   console.log('response URI SERVER:' + response.uri)
+
+    //   return response.uri
+    // })
   }
 
   handleError(error: HttpErrorResponse) {

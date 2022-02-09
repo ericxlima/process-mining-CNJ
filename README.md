@@ -14,7 +14,7 @@ nvm use 14.19.0
 npm install -g @angular/cli
 npm install
 #  Run the client
-ng serve
+ng serve -o
 ```
 
 
