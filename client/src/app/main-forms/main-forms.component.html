@@ -1,9 +1,13 @@
-<section class="forms-section">
+<section class="container">
   <form class="forms" (ngSubmit)="toTransfer()" methods='post' enctype="multipart/form-data">
-    <h2 class="forms-title">MP4CNJ </h2>
-    <label class="input-label" for="file">Drop the EventLog:</label>
-    <input class="file" type="file" name="file"
-           id="file" [(ngModel)]="file" (change)="onFileChange($event)" required>
-    <button class="forms-button" type="submit" name="button">Send File</button>
+    <h2 class="forms-title">PM4CNJ </h2>
+    <div class="forms-field">
+      <label class="forms-field-label" for="file">Drop the EventLog:</label>
+      <input class="forms-field-input" type="file" name="file"
+             id="file" [(ngModel)]="file" (change)="onFileChange($event)" accept=".csv" required>
+    </div>
+    <div class="button-wrapper">
+      <button class="forms-button" type="submit" name="button">Send File</button>
+    </div>
   </form>
 </section>

@@ -1,4 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-body {
-  background-color: #1e1e1e;
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap');
+
+* {
+  font-family: 'Sora', sans-serif;
+}
+
+.container {
+  max-width: 400px;
+  padding: 30px;
+  margin: 0 auto;
 }

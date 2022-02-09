@@ -45,6 +45,6 @@ flask run
 ## Extra
 
 - [x] Architecture Blueprints to Flask 
-- [ ] Architecture Scalable to Angular 
+- [x] Architecture Scalable to Angular 
 - [ ] Have a tab with general information about the data
 - [ ] Implement filtering functions on the data
