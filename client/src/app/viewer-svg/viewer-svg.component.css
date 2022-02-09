@@ -1,4 +1,10 @@
 .image-view {
     background-color: antiquewhite;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
     color: black;
+    z-index: 99;
 }

@@ -85,3 +85,28 @@
 .forms-button:hover {
   opacity: 0.8;
 }
+
+
+/* Spinner */
+
+.spinner {
+  position: absolute;
+  left: 0; 
+  right: 0; 
+  bottom: 10rem;
+  margin-left: auto; 
+  margin-right: auto; 
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #369c38;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  z-index: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

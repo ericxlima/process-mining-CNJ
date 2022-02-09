@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-viewer-svg',
@@ -8,13 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ViewerSvgComponent implements OnInit {
   @Input() uri: any;
 
+  // @Output() hidden = new EventEmitter<any>();  
+
   // title = 'angular-img-hover';
-  // myThumbnail="https://static.vix.com/pt/sites/default/files/t/todo-mundo-odeia-o-chris-0718-1400x800.jpg";
-  // myFullresImage="https://static.vix.com/pt/sites/default/files/t/todo-mundo-odeia-o-chris-0718-1400x800.jpg";
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
