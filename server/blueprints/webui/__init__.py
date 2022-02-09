@@ -12,7 +12,7 @@ def index_template():
 
 @templates_bp.route('/api')
 def api_template():
-    return '# Doc to API'
+    return 'Use the POST method to route /api/v1/post_data to send your csv to backend'
     
 @templates_bp.route('/test')
 def test():

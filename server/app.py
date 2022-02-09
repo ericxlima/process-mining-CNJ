@@ -9,7 +9,7 @@ UPLOAD_FOLDER = 'blueprints/api/files'
 ALLOWED_EXTENSIONS = {'csv'}
 
 app = Flask(__name__)
-app.config.update(SECRET_KEY="123456789")
+app.config.update(SECRET_KEY="2f7ac045-92d5-43d6-9d5b-ee068d4b9974")
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['FILE_NAME'] = 'event_log'
 

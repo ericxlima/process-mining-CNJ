@@ -1,13 +1,13 @@
 #  Basic Dependences
 import pm4py
-import numpy as np
+# import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 
-from datetime import datetime
+# from datetime import datetime
 
-from pm4py.util import constants
+# from pm4py.util import constants
 
 #  Realize importer/exportes to xes files
 from pm4py.objects.log.importer.xes import importer as xes_importer
@@ -19,13 +19,13 @@ from pm4py.objects.log.util import dataframe_utils
 #  Convert dataframes to eventLogs
 from pm4py.objects.conversion.log import converter as log_converter
 
+#  Filters (EXTRA)
 #  Filter to EventLogs
-from pm4py.algo.filtering.log.timestamp import timestamp_filter
-from pm4py.algo.filtering.log.cases import case_filter
-
+# from pm4py.algo.filtering.log.timestamp import timestamp_filter
+# from pm4py.algo.filtering.log.cases import case_filter
 #  Filter to  DATAFRAMES
-from pm4py.algo.filtering.pandas.timestamp import timestamp_filter as timestamp_filter_df
-from pm4py.algo.filtering.pandas.cases import case_filter as case_filter_df
+# from pm4py.algo.filtering.pandas.timestamp import timestamp_filter as timestamp_filter_df
+# from pm4py.algo.filtering.pandas.cases import case_filter as case_filter_df
 
 #  DFG Algorithm
 from pm4py.algo.discovery.dfg import algorithm as dfg_discovery

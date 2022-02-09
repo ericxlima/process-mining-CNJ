@@ -6,10 +6,14 @@ sudo apt-get install graphviz
 ## For Client:
 ```sh
 cd client
+#  Use the NVM - Node Version Manager - to choice the version 14.19.0
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 nvm install 14.19.0
 nvm use 14.19.0
+#  Install the angular-cli and others dependences
 npm install -g @angular/cli
-
+npm install
+#  Run the client
 ng serve
 ```
 
@@ -26,7 +30,7 @@ flask run
 ## Front-End
 
 - [x] pages/components Angular
-- [ ] Integration with the backend
+- [x] Integration with the backend
 - [x] Forms to send csv to backend
 - [ ] Component to visualize svg image
 

@@ -2,6 +2,8 @@
 venv/
 __pycache__/
 event_log.*.csv
+event_log.*.xes
+event_log.*.svg
 
 # Client's git ignore
 # See http://help.github.com/ignore-files/ for more about ignoring files.
@@ -11,6 +13,7 @@ event_log.*.csv
 /tmp
 /out-tsc
 /bazel-out
+.angular/
 
 # Node
 */node_modules

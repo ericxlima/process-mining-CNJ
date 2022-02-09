@@ -1,22 +1,23 @@
-from os.path import join
 import json
 import uuid
+from os.path import join
 
-from flask import Blueprint, flash
+from flask import Blueprint 
+# from flask import flash
 
 from flask import current_app
 from flask import request
-from flask import redirect
-from flask import url_for
+# from flask import redirect
+# from flask import url_for
 
 
-api_bp = Blueprint('api', __name__,
-                   static_folder='./server/static')
+api_bp = Blueprint('api', __name__)
 
 
 @api_bp.route('/')
 def index_api():
-    return '<h1>Wellcome to API</h1>'
+    body = '<h1>Wellcome to API</h1>'
+    return body
 
 
 #  Get csv file from FrontEnd
@@ -30,7 +31,7 @@ def post_data():
                 uploaded_file.write(request.data)
             return json.dumps({'message': 'File saved successfully', 'status': 200})
         return json.dumps({'message': 'No content'})
-        # return redirect(url_for('process'))
+    # return redirect(url_for('process'))
 
 
 #  Calculate Rules
