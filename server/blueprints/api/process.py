@@ -4,6 +4,8 @@ import pm4py
 import pandas as pd
 # import matplotlib.pyplot as plt
 # import seaborn as sns
+from os.path import dirname
+from os.path import join
 
 # from datetime import datetime
 
@@ -32,14 +34,11 @@ from pm4py.algo.discovery.dfg import algorithm as dfg_discovery
 from pm4py.visualization.dfg import visualizer as dfg_visualization
 
 
-PATH_FILE_XES = 'blueprints/api/files/EventLog_Anonim_UTF8.xes'
-PATH_FILE_CSV = 'blueprints/api/files/EventLog_Anonim_UTF8.csv'
-PATH_FILE_SVG = 'blueprints/api/files/EventLog_Anonim_UTF8.svg'
 
-
-def transform_csv_to_eventlog():
+def transform_csv_to_eventlog(file_name:str, folder_path:str) -> None:
     #  Read file and create df
-    log_csv_df = pd.read_csv(PATH_FILE_CSV, 
+    path_csv = join(folder_path, file_name)
+    log_csv_df = pd.read_csv(path_csv, 
                              sep=';', 
                              encoding='utf-8', 
                              dtype=str)
@@ -56,22 +55,24 @@ def transform_csv_to_eventlog():
     log_csv = log_converter.apply(log_csv_df)
 
     #  Export EventLog
-    xes_exporter.apply(log_csv, PATH_FILE_XES)
+    path_xes = join(folder_path, f'{file_name[:-4]}.xes')
+    xes_exporter.apply(log_csv, path_xes)
 
-def transform_eventlog_to_dfg():
-    log_xes = xes_importer.apply(PATH_FILE_XES)
+def transform_eventlog_to_dfg(file_name:str, folder_path:str) -> None:
+    path_xes = join(folder_path, file_name)
+    log_xes = xes_importer.apply(path_xes)
     dfg = dfg_discovery.apply(log_xes)
     gviz = dfg_visualization.apply(dfg, log=log_xes)
-    dfg_visualization.save(gviz=gviz, output_file_path=PATH_FILE_SVG)
+    path_svg = join(folder_path, f'{file_name[:-4]}.svg')
+    dfg_visualization.save(gviz=gviz, 
+                           output_file_path=path_svg)
     return
-
 
 #  Aply Filters...
-def filters():
-    """TO DO..."""
-    return
-
-
-if __name__ == '__main__':
-    transform_csv_to_eventlog()
-    transform_eventlog_to_dfg()
+# def filters():
+#     """TO DO..."""
+#     return
+# 
+# if __name__ == '__main__':
+#     transform_csv_to_eventlog('put the .csv file name here')
+#     transform_eventlog_to_dfg('put the .xes file name here')

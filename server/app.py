@@ -5,7 +5,7 @@ from blueprints.webui import templates_bp
 from blueprints.api import api_bp
 
 
-UPLOAD_FOLDER = 'blueprints/api/files'
+UPLOAD_FOLDER = 'data'
 ALLOWED_EXTENSIONS = {'csv'}
 
 app = Flask(__name__)
