@@ -10,22 +10,21 @@ import { Data } from '../models/data'
 })
 export class DataService {
 
-  url:string = 'http://127.0.0.1:5000/'; // api rest
-  url_test_post:string = 'http://127.0.0.1:5000/api/v1/post_data';
-  url_test_get:string = 'https://viacep.com.br/ws/56600000/json'
+  url_post_api:string = 'http://127.0.0.1:5000/api/v1/post_data';
+  url_get_img:string = 'http://127.0.0.1:5000/api/v1/<link>'
 
   constructor(private http: HttpClient) {
   }
 
   getData(): Observable<any[]> {
-    return this.http.get<any[]>(this.url_test_get)
+    return this.http.get<any[]>(this.url_get_img)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
   postData(file: any, data: File, options: object): any {
-    this.http.post<any>(this.url_test_post, data, options).toPromise().then(
+    this.http.post<any>(this.url_post_api, data, options).toPromise().then(
       data=>{console.log(data)}
     )
   }

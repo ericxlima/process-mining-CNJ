@@ -1,7 +1,7 @@
 import { Component, Output } from "@angular/core";
-import { EventEmitter } from "@angular/core";
 import { DataService } from "../services/data.service";
-import { HttpClient } from "@angular/common/http";
+// import { EventEmitter } from "@angular/core";
+// import { HttpClient } from "@angular/common/http";
 
 
 @Component({
@@ -12,8 +12,8 @@ import { HttpClient } from "@angular/common/http";
 
 export class MainFormsComponent {
 
-  file: string
-  fileData: File
+  file: string;
+  fileData: File;
 
   constructor(private apiService: DataService){
   }

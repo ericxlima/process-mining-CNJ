@@ -1,4 +1,6 @@
 import { MainFormsComponent } from './main-forms/main-forms.component';
+import { ViewerSvgComponent } from './viewer-svg/viewer-svg.component';
+
 import { EventEmitter, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     MainFormsComponent,
+    ViewerSvgComponent,
   ],
   imports: [
     BrowserModule,
