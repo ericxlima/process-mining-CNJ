@@ -21,7 +21,6 @@ import { NgxImageZoomComponent } from 'ngx-image-zoom';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgxImageZoomComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

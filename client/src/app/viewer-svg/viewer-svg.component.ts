@@ -8,9 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ViewerSvgComponent implements OnInit {
   @Input() uri: any;
 
-  title = 'angular-img-hover';
-  myThumbnail="https://static.vix.com/pt/sites/default/files/t/todo-mundo-odeia-o-chris-0718-1400x800.jpg";
-  myFullresImage="https://static.vix.com/pt/sites/default/files/t/todo-mundo-odeia-o-chris-0718-1400x800.jpg";
+  // title = 'angular-img-hover';
+  // myThumbnail="https://static.vix.com/pt/sites/default/files/t/todo-mundo-odeia-o-chris-0718-1400x800.jpg";
+  // myFullresImage="https://static.vix.com/pt/sites/default/files/t/todo-mundo-odeia-o-chris-0718-1400x800.jpg";
 
   constructor() { }
 
