@@ -38,8 +38,10 @@ def post_data():
         return json.dumps({'message': 'No content'})
 
 
-#  Calculate Rules
 @api_bp.route('/get_data/<data_uri>', methods=['GET'])
 def get_data(data_uri):
+    """
+    Read generated svg file. The image is going to be presented at the front end page.
+    """
     path = join(current_app.config['UPLOAD_FOLDER'], data_uri)
     return send_file(path, mimetype='image/png')

@@ -24,6 +24,9 @@ def create_data_dir():
 
 
 def transform_csv_to_eventlog(file_path: str) -> None:
+    """
+    Read csv file and create the xes file. File is stored in the /data directory.
+    """
     #  Read file and create df
     log_csv_df = pd.read_csv(
         file_path,
@@ -51,6 +54,9 @@ def transform_csv_to_eventlog(file_path: str) -> None:
 
 
 def transform_eventlog_to_dfg(file_path: str) -> None:
+    """
+    Transform xes file into a more presentable and user-friendly svg image.
+    """
     log_xes = xes_importer.apply(file_path)
     dfg = dfg_discovery.apply(log_xes)
     gviz = dfg_visualization.apply(dfg, log=log_xes)
@@ -61,6 +67,9 @@ def transform_eventlog_to_dfg(file_path: str) -> None:
 
 
 def create_new_file_extension(file_path: str, extension: str = '.xes') -> str:
+    """
+    Change the extension of a file without touching the file name.
+    """
     if '.' not in extension:
         extension = f'.{extension}'
 
