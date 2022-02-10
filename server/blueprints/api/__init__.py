@@ -13,12 +13,6 @@ from .process import transform_csv_to_eventlog, transform_eventlog_to_dfg, creat
 api_bp = Blueprint('api', __name__)
 
 
-@api_bp.route('/')
-def index_api():
-    body = '<h1>Wellcome to API</h1>'
-    return body
-
-
 #  Get csv file from FrontEnd
 @api_bp.route('/post_data', methods=["POST"])
 def post_data():

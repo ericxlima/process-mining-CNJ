@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { DataService } from "../services/data.service";
-// import { EventEmitter } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 
 
 @Component({
@@ -17,14 +15,12 @@ export class MainFormsComponent {
   response: any;
   hidden:boolean = false;
 
-  // @Input() hidden = new EventEmitter<any>()
   @Output() toPostURI = new EventEmitter<any>();  
 
   constructor(private apiService: DataService){
   }
 
   onFileChange(event: any) {
-    /*Add file content to fileData*/
     if (event.target.files.length > 0) {
       this.fileData = event.target.files[0];
     }
@@ -36,15 +32,9 @@ export class MainFormsComponent {
     headers.append('Accept', 'application/json');
     this.response = this.apiService.postData(this.file, this.fileData, { headers: headers }).subscribe(
       (data:any)=>{
-        // console.log('FRONT')
-        // console.log(data)
-        // data            <<<<<<<<<<<<<------------- Data 
-        // console.log('Solicitada transferencia')
         this.toPostURI.emit(data.uri)
       }
     )
-      // console.log('Response FRONT:', this.response)
-      // console.log('Test: ', this.apiService.response)
   };
 
   toGet() {
