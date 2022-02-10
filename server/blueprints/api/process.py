@@ -1,5 +1,5 @@
 from pathlib import Path
-from os.path import join, exists
+from os.path import exists
 from os import mkdir
 
 from flask import current_app
@@ -44,7 +44,7 @@ def transform_csv_to_eventlog(file_path: str) -> None:
     log_csv = log_converter.apply(log_csv_df)
 
     # Export EventLog
-    renamed_file_path = __create_new_file_extension(file_path)
+    renamed_file_path = create_new_file_extension(file_path)
     xes_exporter.apply(log_csv, renamed_file_path)
 
     transform_eventlog_to_dfg(renamed_file_path)
@@ -55,12 +55,12 @@ def transform_eventlog_to_dfg(file_path: str) -> None:
     dfg = dfg_discovery.apply(log_xes)
     gviz = dfg_visualization.apply(dfg, log=log_xes)
 
-    new_svg_path = __create_new_file_extension(file_path, extension='svg')
+    new_svg_path = create_new_file_extension(file_path, extension='svg')
     dfg_visualization.save(gviz=gviz,
                            output_file_path=new_svg_path)
 
 
-def __create_new_file_extension(file_path: str, extension: str = '.xes') -> str:
+def create_new_file_extension(file_path: str, extension: str = '.xes') -> str:
     if '.' not in extension:
         extension = f'.{extension}'
 

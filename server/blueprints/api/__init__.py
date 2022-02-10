@@ -7,15 +7,19 @@ from flask import Blueprint, send_file
 
 from flask import current_app
 
-from .process import transform_csv_to_eventlog, transform_eventlog_to_dfg, create_data_dir
+from .process import transform_csv_to_eventlog, transform_eventlog_to_dfg, create_data_dir, create_new_file_extension
 
 
 api_bp = Blueprint('api', __name__)
 
 
-#  Get csv file from FrontEnd
 @api_bp.route('/post_data', methods=["POST"])
 def post_data():
+    """
+    Generate the .xes and .svg files from the csv data uploaded.
+    Save files to a local /data directory. the /data directory is created
+    if not present.
+    """
     if request.method == 'POST':
         create_data_dir()
         if request.data:
@@ -26,14 +30,12 @@ def post_data():
                 uploaded_file.write(request.data)
             #  Generate SVG
             transform_csv_to_eventlog(file_path)
-            file_name_xes = f'{file_name[:-4]}.xes'
-
-            return json.dumps({'message': 'File saved successfully', 
+            file_name_svg = create_new_file_extension(file_name, extension='.svg')
+            return json.dumps({'message': 'File saved successfully',
                                'status': 200,
-                               'uri': f'{file_name_xes[:-4]}.svg'
+                               'uri': file_name_svg
                                })
         return json.dumps({'message': 'No content'})
-    # return redirect(url_for('process'))
 
 
 #  Calculate Rules
