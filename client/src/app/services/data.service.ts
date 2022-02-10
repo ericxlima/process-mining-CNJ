@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Data } from '../models/data'
 
 
 @Injectable({
@@ -29,25 +28,16 @@ export class DataService {
     return this.http.post<any[]>(this.url_post_api, data, options).pipe(
       retry(2),
       catchError(this.handleError))
-    
-    // .subscribe((response:any)=>{
-    //   console.log('response URI SERVER:' + response.uri)
-
-    //   return response.uri
-    // })
   }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      // Erro ocorreu no lado do client
       errorMessage = error.error.message;
     } else {
-      // Erro ocorreu no lado do servidor
       errorMessage = `Error Code: ${error.status}, ` + `message: ${error.message}`;
     }
     console.log(errorMessage);
     return throwError(errorMessage);
   };
-
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
+import { Observable } from "rxjs";
 import { DataService } from "../services/data.service";
 
 
@@ -13,7 +14,9 @@ export class MainFormsComponent {
   file: string;
   fileData: File;
   response: any;
+  
   hidden:boolean = false;
+  disableButton: boolean = false;
 
   @Output() toPostURI = new EventEmitter<any>();  
 
@@ -28,13 +31,22 @@ export class MainFormsComponent {
 
   toTransfer() {
     let headers = new Headers();
-    this.hidden = !this.hidden
+    this.disableButton = !this.disableButton
     headers.append('Accept', 'application/json');
-    this.response = this.apiService.postData(this.file, this.fileData, { headers: headers }).subscribe(
-      (data:any)=>{
-        this.toPostURI.emit(data.uri)
-      }
-    )
+    if(typeof this.fileData != undefined){
+      this.hidden = !this.hidden
+      this.response = this.apiService.postData(this.file, this.fileData, { headers: headers }).subscribe(
+        
+        (data:any)=>{
+          this.toPostURI.emit(data.uri)
+        }
+      )
+      // this.hidden = !this.hidden
+    }
+    else {
+      alert('Please upload a file before submitting.')
+
+    }
   };
 
   toGet() {

@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container" >
   <form class="forms" (ngSubmit)="toTransfer()" methods='post' enctype="multipart/form-data">
     <h2 class="forms-title">PM4CNJ </h2>
     <div class="forms-field">
@@ -7,7 +7,7 @@
              id="file" [(ngModel)]="file" (change)="onFileChange($event)" accept=".csv" required>
     </div>
     <div class="button-wrapper">
-      <button class="forms-button" type="submit" name="button">Send File</button>
+      <button class="forms-button" type="submit" name="button" [disabled]="disableButton">Send File</button>
     </div>
 
     <div class="spinner" [hidden]="!hidden"></div>
